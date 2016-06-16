@@ -32,6 +32,7 @@ RUN sed -i 's/\;error_log\ =\ syslog/error_log\ =\ syslog/g' /etc/php5/fpm/php.i
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y nginx
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+RUN sed -i -e "s/#\sserver_tokens off/\sserver_tokens off" /etc/nginx/nginx.conf
 RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php5/fpm/php-fpm.conf
 RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php5/fpm/php.ini
 RUN sed -i -e "s/;security.limit_extensions\s*=\s*.php\s*.php3\s*.php4\s*.php5/security.limit_extensions =/g" /etc/php5/fpm/pool.d/www.conf
