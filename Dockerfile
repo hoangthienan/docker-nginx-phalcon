@@ -51,7 +51,7 @@ EXPOSE 80
 
 # Phalcon-PHP Installation
 RUN apt-get install -y git-core gcc autoconf
-RUN git clone git://github.com/phalcon/cphalcon.git
+RUN git clone git://github.com/phalcon/cphalcon.git -b 2.0.x
 RUN cd cphalcon/build && ./install
 RUN echo "extension=phalcon.so" >> /etc/php5/fpm/conf.d/30-phalcon.ini
 RUN echo "extension=phalcon.so" >> /etc/php5/cli/conf.d/30-phalcon.ini
